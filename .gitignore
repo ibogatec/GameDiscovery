@@ -1,0 +1,45 @@
+.idea
+.run
+.gradle
+.qodo
+.vscode
+__pycache__
+node_modules
+.[Ee]nv
+.[Ee]nv.*
+*.[Ll]og
+[Rr]eports
+[Vv]env
+[Bb]uild
+[Bb]in
+[Dd]ebug
+[Rr]elease
+[Dd]ist
+[Oo]ut
+[Tt]emp
+[Tt]mp
+[Dd]b
+[Tt]arget
+[Cc]overage
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.env
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
