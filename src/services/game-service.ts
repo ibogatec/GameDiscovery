@@ -4,7 +4,7 @@ import httpService, { type ResponseType, type ErrorType, type FinallyType } from
 class GameService {
 
     public getAllGames(responseCallback?: ResponseType<Game[]>, errorCallback?: ErrorType, finallyCallback?: FinallyType) {
-        httpService.endpoint = 'games';
+        httpService.endpoint = 'giveaways';
         return httpService.getAll<Game>(responseCallback, errorCallback, finallyCallback);
     }
 
