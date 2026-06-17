@@ -1,5 +1,6 @@
 import { Card, Heading, Image } from "@chakra-ui/react";
 import type Game from "@/dto/game.ts";
+import PlatformIconList from "@/components/PlatformIconList.tsx";
 
 interface GameCardProps {
     game: Game;
@@ -11,6 +12,7 @@ function GameCard({ game }: GameCardProps) {
             <Image src={game.thumbnail} alt={game.title} />
             <Card.Body>
                 <Heading fontSize="2xl">{game.title}</Heading>
+                <PlatformIconList platforms={game.platforms} />
             </Card.Body>
         </Card.Root>
     );

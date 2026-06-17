@@ -4,6 +4,16 @@ import GameCard from "@/components/GameCard.tsx";
 
 function GameGrid() {
     const { games, error } = useGames();
+    const platforms = [
+        ...new Set(
+            games.map(game => game.platforms
+                .toLocaleLowerCase()
+                .split(','))
+                .flat()
+                .map(platform => platform.trim())
+                .filter(Boolean))
+    ];
+    console.log(platforms);
     return (
         <div>
             {error && <Text>Name: {error.name}, Message: {error.message}, Code: {error.code}, Status: {error.status}</Text>}
