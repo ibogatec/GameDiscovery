@@ -1,6 +1,7 @@
-import { Card, Heading, Image } from "@chakra-ui/react";
+import { Card, Heading, HStack, Image } from "@chakra-ui/react";
 import type Game from "@/dto/game.ts";
 import PlatformIconList from "@/components/PlatformIconList.tsx";
+import GameUsers from "@/components/GameUsers.tsx";
 
 interface GameCardProps {
     game: Game;
@@ -12,7 +13,10 @@ function GameCard({ game }: GameCardProps) {
             <Image src={game.thumbnail} alt={game.title} />
             <Card.Body>
                 <Heading fontSize="2xl">{game.title}</Heading>
-                <PlatformIconList platforms={game.platforms} />
+                <HStack justifyContent="space-between">
+                    <PlatformIconList platforms={game.platforms} />
+                    <GameUsers users={game.users} />
+                </HStack>
             </Card.Body>
         </Card.Root>
     );
