@@ -10,7 +10,7 @@ interface GameCardProps {
 function GameCard({ game }: GameCardProps) {
     return (
         <Card.Root borderRadius={30} overflow="hidden">
-            <Image src={game.thumbnail} alt={game.title} />
+            <Image src={game.image} alt={game.title} />
             <Card.Body>
                 <Heading fontSize="2xl">{game.title}</Heading>
                 <HStack justifyContent="space-between">
