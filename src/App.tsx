@@ -4,11 +4,16 @@ import GameGrid from "@/components/GameGrid.tsx";
 
 function App() {
     return (
-        <Grid templateAreas={
-            {
+        <Grid
+            templateAreas={{
                 base: "'nav' 'main'",
                 lg: "'nav nav' 'aside main'",
-            }}>
+            }}
+            templateColumns={{
+                base: "1fr",
+                lg: "256px 1fr",
+            }}
+        >
             <GridItem area="nav">
                 <NavBar />
             </GridItem>

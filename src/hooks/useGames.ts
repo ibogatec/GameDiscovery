@@ -6,16 +6,23 @@ import gameService from "@/services/game-service.ts";
 function useGames() {
     const [games, setGames] = useState<Game[]>([]);
     const [error, setError] = useState<ApiError | null>(null);
+    const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         const abortController = gameService.getAllGames(
             response => setGames(response),
-            err => setError(err)
+            err => setError(err),
+            () => {
+                if (abortController.signal.aborted) {
+                    return;
+                }
+                setLoading(false);
+            }
         );
         return () => abortController.abort();
     }, []);
 
-    return { games, error, setGames, setError };
+    return { games, error, isLoading, setGames, setError };
 }
 
 export default useGames;

@@ -7,7 +7,7 @@ export type FinallyType = () => void;
 
 class HttpService {
     private _endpoint: string = '';
-    private _delayMs = 10;
+    private _delayMs = 1000;
 
     public set endpoint(value: string) {
         this._endpoint = value;
