@@ -4,7 +4,7 @@ function GameCardSkeleton() {
     return (
         <Card.Root height="100%" width="100%">
             <Skeleton height="256px" width="100%" />
-            <Card.Body>
+            <Card.Body justifyContent="space-between">
                 <SkeletonText noOfLines={2} gap={4} />
                 <HStack justifyContent="space-between" marginTop={6}>
                     <Skeleton height="30px" width="15%" />
