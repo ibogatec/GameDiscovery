@@ -1,22 +1,18 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useGames from "@/hooks/useGames.ts";
+import type Game from "@/dto/game.ts";
+import type ApiError from "@/dto/api-error.ts";
 import GameCard from "@/components/GameCard.tsx";
 import GameCardSkeleton from "@/components/GameCardSkeleton.tsx";
 import GameCardContainer from "@/components/GameCardContainer.tsx";
 
-function GameGrid() {
-    const { games, error, isLoading } = useGames();
-    const platforms = [
-        ...new Set(
-            games.map(game => game.platforms
-                .toLocaleLowerCase()
-                .split(','))
-                .flat()
-                .map(platform => platform.trim())
-                .filter(Boolean))
-    ];
+interface Props {
+    games?: Game[];
+    error?: ApiError;
+    isLoading: boolean;
+}
+
+function GameGrid({ games, error, isLoading }: Props) {
     const skeletons = Array.from({ length: 24 }, (_, index) => index);
-    console.log(platforms);
     return (
         <div>
             {error && <Text>Name: {error.name}, Message: {error.message}, Code: {error.code}, Status: {error.status}</Text>}
@@ -26,7 +22,7 @@ function GameGrid() {
                         <GameCardSkeleton />
                     </GameCardContainer>
                 )}
-                {games.map(game =>
+                {games?.map(game =>
                     <GameCardContainer key={game.id}>
                         <GameCard game={game} />
                     </GameCardContainer>

@@ -5,7 +5,7 @@ import gameService from "@/services/game-service.ts";
 
 function useGames() {
     const [games, setGames] = useState<Game[]>([]);
-    const [error, setError] = useState<ApiError | null>(null);
+    const [error, setError] = useState<ApiError | undefined>(undefined);
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
