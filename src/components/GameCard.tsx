@@ -10,7 +10,7 @@ interface GameCardProps {
 function GameCard({ game }: GameCardProps) {
     return (
         <Card.Root height="100%" width="100%">
-            <Image src={game.image} alt={game.title} height="256px" width="100%" objectFit="cover" />
+            <Image src={game.image} alt={game.title} height={300} width="100%" objectFit="cover" />
             <Card.Body justifyContent="space-between">
                 <Heading fontSize="2xl">{game.title}</Heading>
                 <HStack justifyContent="space-between">
