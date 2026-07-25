@@ -30,11 +30,11 @@ function App() {
                 <NavBar />
             </GridItem>
 
-            <GridItem area="aside" hideBelow="lg">
+            <GridItem area="aside" hideBelow="lg" paddingTop={8}>
                 <PlatformList platforms={platforms} isLoading={isLoading} />
             </GridItem>
 
-            <GridItem area="main">
+            <GridItem area="main" padding={8}>
                 <GameGrid games={games} error={error} isLoading={isLoading} />
             </GridItem>
         </Grid>
