@@ -1,7 +1,7 @@
 import { type IconType } from "react-icons";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { SiSteam, SiEpicgames, SiPlaystation5, SiPlaystation4, SiIos } from "react-icons/si";
-import { FaDesktop, FaXbox, FaItchIo, FaUnlockAlt, FaAndroid } from "react-icons/fa";
+import { FaDesktop, FaXbox, FaItchIo, FaUnlockAlt, FaAndroid, FaLayerGroup } from "react-icons/fa";
 import { GiVrHeadset, GiGamepad } from "react-icons/gi";
 import { CgGames } from "react-icons/cg";
 import { IoGameController } from "react-icons/io5";
@@ -13,6 +13,7 @@ interface PlatformIconListProps {
 
 function PlatformIconList({ platforms }: PlatformIconListProps) {
     const iconMap: { [key: string]: IconType } = {
+        "all": FaLayerGroup,
         "pc": FaDesktop,
         "epic games store": SiEpicgames,
         "drm-free": FaUnlockAlt,
