@@ -44,7 +44,7 @@ function App() {
             </GridItem>
 
             <GridItem area="aside" hideBelow="lg" paddingTop={8}>
-                <PlatformList platforms={platforms} isLoading={isLoading} onSelectPlatform={handleSelectPlatform} />
+                <PlatformList platforms={platforms} selectedPlatform={selectedPlatform} isLoading={isLoading} onSelectPlatform={handleSelectPlatform} />
             </GridItem>
 
             <GridItem area="main" padding={8}>
