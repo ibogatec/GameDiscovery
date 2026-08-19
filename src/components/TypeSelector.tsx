@@ -9,7 +9,7 @@ interface Props {
 
 function TypeSelector({ menuTypes, selectedType, onSelectType }: Props) {
     return (
-        <Box marginBottom={5}>
+        <Box>
             <Menu.Root>
                 <Menu.Trigger asChild>
                     <Button variant="outline" colorScheme="teal">
