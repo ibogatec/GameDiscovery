@@ -1,16 +1,18 @@
 import { Card, Heading, HStack, Image } from "@chakra-ui/react";
-import type Game from "@/dto/game.ts";
 import PlatformIconList from "@/components/PlatformIconList.tsx";
 import GameUsers from "@/components/GameUsers.tsx";
+import noImage from "@/assets/no-image-placeholder.webp";
+import type Game from "@/dto/game.ts";
 
 interface GameCardProps {
     game: Game;
 }
 
 function GameCard({ game }: GameCardProps) {
+    const gameImageUrl = game?.image ? game.image : noImage;
     return (
         <Card.Root height="100%" width="100%">
-            <Image src={game.image} alt={game.title} height={300} width="100%" objectFit="cover" />
+            <Image src={gameImageUrl} alt={game.title} height={300} width="100%" objectFit="cover" />
             <Card.Body justifyContent="space-between">
                 <Heading fontSize="2xl">{game.title}</Heading>
                 <HStack justifyContent="space-between">
