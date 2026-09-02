@@ -9,9 +9,10 @@ interface Props {
     games?: Game[];
     error?: ApiError;
     isLoading: boolean;
+    searchTerm?: string;
 }
 
-function GameGrid({ games, error, isLoading }: Props) {
+function GameGrid({ games, error, isLoading, searchTerm }: Props) {
     const skeletons = Array.from({ length: 24 }, (_, index) => index);
     return (
         <div>
@@ -24,7 +25,7 @@ function GameGrid({ games, error, isLoading }: Props) {
                 )}
                 {games?.map(game =>
                     <GameCardContainer key={game.id}>
-                        <GameCard game={game} />
+                        <GameCard game={game} searchTerm={searchTerm} />
                     </GameCardContainer>
                 )}
             </SimpleGrid>

@@ -24,7 +24,7 @@ function ColorModeSwitch() {
                     transitionTimingFunction="ease-in-out"/>
             </Switch.Control>
 
-            <Switch.Label>
+            <Switch.Label textWrap="nowrap">
                 {isDark ? "Dark mode" : "Light mode"}
             </Switch.Label>
         </Switch.Root>

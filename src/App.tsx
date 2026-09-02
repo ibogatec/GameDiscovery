@@ -8,6 +8,7 @@ import useGames from "@/hooks/useGames.ts";
 import usePlatforms from "@/hooks/usePlatforms.ts";
 import useTypes from "@/hooks/useTypes.ts";
 import useSort from "@/hooks/useSort.ts";
+import useSearch from "@/hooks/useSearch.ts";
 import type Game from "@/dto/game.ts";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     const { selectedPlatform, setSelectedPlatform } = usePlatforms();
     const { selectedType, setSelectedType } = useTypes();
     const { selectedSort, setSelectedSort } = useSort();
+    const { searchTerm, setSearchTerm } = useSearch();
     const platforms = [
         ...new Set(
             games.flatMap(game => game.platforms
@@ -53,6 +55,12 @@ function App() {
         return 0;
 
     });
+    const searchedGames = sortedGames.filter(game => {
+        if (!searchTerm) {
+            return true;
+        }
+        return game.title.toLowerCase().includes(searchTerm.toLowerCase());
+    });
 
     const handleSelectPlatform = (platform: string) => {
         setSelectedPlatform(platform);
@@ -62,6 +70,9 @@ function App() {
     };
     const handleSortChange = (sort: string) => {
         setSelectedSort(sort);
+    };
+    const handleSearchChange = (searchTerm?: string) => {
+        setSearchTerm(searchTerm);
     };
 
     return (
@@ -76,7 +87,7 @@ function App() {
             }}
         >
             <GridItem area="nav">
-                <NavBar />
+                <NavBar onSearchChange={handleSearchChange} />
             </GridItem>
 
             <GridItem area="aside" hideBelow="lg" paddingTop={8}>
@@ -88,7 +99,7 @@ function App() {
                     <TypeSelector menuTypes={menuTypes} selectedType={selectedType} onSelectType={handleSelectType} />
                     <SortSelector selectedSort={selectedSort} onSortChange={handleSortChange} />
                 </HStack>
-                <GameGrid games={sortedGames} error={error} isLoading={isLoading} />
+                <GameGrid games={searchedGames} error={error} isLoading={isLoading} searchTerm={searchTerm} />
             </GridItem>
         </Grid>
     );
