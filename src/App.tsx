@@ -4,6 +4,7 @@ import GameGrid from "@/components/GameGrid.tsx";
 import PlatformList from "@/components/PlatformList.tsx";
 import TypeSelector from "@/components/TypeSelector.tsx";
 import SortSelector from "@/components/SortSelector.tsx";
+import GameHeading from "@/components/GameHeading.tsx";
 import useGames from "@/hooks/useGames.ts";
 import usePlatforms from "@/hooks/usePlatforms.ts";
 import useTypes from "@/hooks/useTypes.ts";
@@ -95,6 +96,9 @@ function App() {
             </GridItem>
 
             <GridItem area="main" padding={8}>
+                <HStack marginBottom={4}>
+                    <GameHeading title={selectedPlatform} />
+                </HStack>
                 <HStack gap={4} marginBottom={6}>
                     <TypeSelector menuTypes={menuTypes} selectedType={selectedType} onSelectType={handleSelectType} />
                     <SortSelector selectedSort={selectedSort} onSortChange={handleSortChange} />
