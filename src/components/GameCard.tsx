@@ -2,6 +2,7 @@ import { Card, Heading, HStack, Image } from "@chakra-ui/react";
 import PlatformIconList from "@/components/PlatformIconList.tsx";
 import GameUsers from "@/components/GameUsers.tsx";
 import HighlightText from "@/components/HighlightText.tsx";
+import GamePrice from "@/components/GamePrice.tsx";
 import noImage from "@/assets/no-image-placeholder.webp";
 import type Game from "@/dto/game.ts";
 
@@ -21,7 +22,10 @@ function GameCard({ game, searchTerm }: GameCardProps) {
                 </Heading>
                 <HStack justifyContent="space-between">
                     <PlatformIconList platforms={game.platforms} />
-                    <GameUsers users={game.users} />
+                    <HStack>
+                        <GameUsers users={game.users} />
+                        <GamePrice price={game.worth} />
+                    </HStack>
                 </HStack>
             </Card.Body>
         </Card.Root>

@@ -38,23 +38,23 @@ function App() {
         let sortKey = sort.toLocaleLowerCase().trim() === 'price' ? 'worth' : sort.toLocaleLowerCase().trim() as keyof Game;
         let valueA = a[sortKey];
         let valueB = b[sortKey];
+        let sortDirection = 0;
         if (sortKey === 'worth') {
             valueA = parseFloat(a[sortKey].replace(/[^0-9.]/g, ''));
-            if (Number.isNaN(valueA)) {
+            if (!valueA || Number.isNaN(valueA)) {
                 valueA = Number.MAX_VALUE;
             }
-            valueB = parseFloat(a[sortKey].replace(/[^0-9.]/g, ''));
-            if (Number.isNaN(valueB)) {
+            valueB = parseFloat(b[sortKey].replace(/[^0-9.]/g, ''));
+            if (!valueB || Number.isNaN(valueB)) {
                 valueB = Number.MAX_VALUE;
             }
-        }
-        if (typeof valueA === 'number' && typeof valueB === 'number') {
-            return valueB - valueA;
+            sortDirection = valueA - valueB;
+        } else if (typeof valueA === 'number' && typeof valueB === 'number') {
+            sortDirection = valueB - valueA;
         } else if (typeof valueA === 'string' && typeof valueB === 'string') {
-            return valueA.localeCompare(valueB);
+            sortDirection = valueA.localeCompare(valueB);
         }
-        return 0;
-
+        return sortDirection;
     });
     const searchedGames = sortedGames.filter(game => {
         if (!searchTerm) {
@@ -64,6 +64,7 @@ function App() {
     });
 
     const handleSelectPlatform = (platform: string) => {
+        console.log('platform', platform);
         setSelectedPlatform(platform);
     };
     const handleSelectType = (type: string) => {
