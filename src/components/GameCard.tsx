@@ -3,6 +3,7 @@ import PlatformIconList from "@/components/PlatformIconList.tsx";
 import GameUsers from "@/components/GameUsers.tsx";
 import HighlightText from "@/components/HighlightText.tsx";
 import GamePrice from "@/components/GamePrice.tsx";
+import Emoji from "@/components/Emoji.tsx";
 import noImage from "@/assets/no-image-placeholder.webp";
 import type Game from "@/dto/game.ts";
 
@@ -20,12 +21,13 @@ function GameCard({ game, searchTerm }: GameCardProps) {
                 <Heading fontSize="2xl">
                     <HighlightText text={game.title} query={searchTerm} />
                 </Heading>
-                <HStack justifyContent="space-between">
+                <HStack justifyContent="space-between" marginY={2}>
                     <PlatformIconList platforms={game.platforms} />
-                    <HStack>
-                        <GameUsers users={game.users} />
-                        <GamePrice price={game.worth} />
-                    </HStack>
+                </HStack>
+                <HStack justifyContent="right">
+                    <Emoji users={game.users} />
+                    <GameUsers users={game.users} />
+                    <GamePrice price={game.worth} />
                 </HStack>
             </Card.Body>
         </Card.Root>

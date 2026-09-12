@@ -64,7 +64,6 @@ function App() {
     });
 
     const handleSelectPlatform = (platform: string) => {
-        console.log('platform', platform);
         setSelectedPlatform(platform);
     };
     const handleSelectType = (type: string) => {
