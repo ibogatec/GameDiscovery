@@ -28,7 +28,8 @@ function PlatformList({ platforms, selectedPlatform, isLoading, onSelectPlatform
                             fontSize='lg'
                             variant='plain'
                             fontWeight={ !selectedPlatform || selectedPlatform === 'all' ? 'bold' : 'normal' }
-                            color={ !selectedPlatform || selectedPlatform === 'all' ? 'blue.500' : 'gray.500' }
+                            color={ !selectedPlatform || selectedPlatform === 'all' ? 'brand' : 'fg.muted' }
+                            _hover={{ color: 'brand' }}
                             onClick={_ => handleClick('all')}
                         >
                             All Platforms
@@ -48,7 +49,8 @@ function PlatformList({ platforms, selectedPlatform, isLoading, onSelectPlatform
                                 fontSize='lg'
                                 variant='plain'
                                 fontWeight={ selectedPlatform === platform ? 'bold' : 'normal' }
-                                color={ selectedPlatform === platform ? 'blue.500' : 'gray.500' }
+                                color={ selectedPlatform === platform ? 'brand' : 'fg.muted' }
+                                _hover={{ color: 'brand' }}
                                 onClick={_ => handleClick(platform)}
                             >
                                 {platform}

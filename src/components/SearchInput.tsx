@@ -23,7 +23,7 @@ function SearchInput({ onSearchChange }: Props) {
     return (
         <InputGroup
             startElement={<BsSearch />}
-            endElement={searchTerm ?  (<CloseButton size="xs" variant="ghost" onClick={handleClearSearch} aria-label="Clear search" />) : undefined}
+            endElement={searchTerm ? (<CloseButton size="xs" variant="ghost" color="fg.muted" _hover={{ color: "fg", bg: "bg.muted" }} onClick={handleClearSearch} aria-label="Clear search" />) : undefined}
         >
             <Input ref={inputRef} borderRadius={16} type="text" placeholder="Search for games..." variant="subtle" onChange={handleChange}/>
         </InputGroup>

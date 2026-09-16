@@ -1,4 +1,4 @@
-import { Card, Heading, HStack, Image } from "@chakra-ui/react";
+import { Card, Heading, HStack, Image, VStack } from "@chakra-ui/react";
 import PlatformIconList from "@/components/PlatformIconList.tsx";
 import GameUsers from "@/components/GameUsers.tsx";
 import HighlightText from "@/components/HighlightText.tsx";
@@ -15,16 +15,16 @@ interface GameCardProps {
 function GameCard({ game, searchTerm }: GameCardProps) {
     const gameImageUrl = game?.image ? game.image : noImage;
     return (
-        <Card.Root height="100%" width="100%">
-            <Image src={gameImageUrl} alt={game.title} height={300} width="100%" objectFit="cover" />
-            <Card.Body justifyContent="space-between">
-                <Heading fontSize="2xl">
-                    <HighlightText text={game.title} query={searchTerm} />
-                </Heading>
-                <HStack justifyContent="space-between" marginY={2}>
+        <Card.Root height="100%" width="100%" overflow="hidden" display="flex" flexDirection="column">
+            <Image src={gameImageUrl} alt={game.title} height="220px" width="100%" objectFit="cover" />
+            <Card.Body display="flex" flexDirection="column" justifyContent="space-between" flex="1" p={5} gap={3}>
+                <VStack align="stretch" gap={2}>
+                    <Heading fontSize="xl" lineClamp={2}>
+                        <HighlightText text={game.title} query={searchTerm} />
+                    </Heading>
                     <PlatformIconList platforms={game.platforms} />
-                </HStack>
-                <HStack justifyContent="right">
+                </VStack>
+                <HStack justifyContent="flex-end" alignItems="center" gap={2} pt={2}>
                     <Emoji users={game.users} />
                     <GameUsers users={game.users} />
                     <GamePrice price={game.worth} />

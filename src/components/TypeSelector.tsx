@@ -12,24 +12,25 @@ function TypeSelector({ menuTypes, selectedType, onSelectType }: Props) {
         <Box>
             <Menu.Root>
                 <Menu.Trigger asChild>
-                    <Button variant="outline" colorScheme="teal">
-                        {selectedType || 'Select Type' }
+                    <Button variant="outline" bg="bg.panel" borderColor="border" color="fg">
+                        {selectedType || 'Select Type'}
                         <BsChevronDown />
                     </Button>
                 </Menu.Trigger>
 
                 <Menu.Positioner>
-                    <Menu.Content>
-                        {
-                            menuTypes.map(type =>
-                                <Menu.Item
-                                    key={type}
-                                    value={type}
-                                    onClick={_ => onSelectType?.(type)}
-                                >
-                                    {type}
-                                </Menu.Item>)
-                        }
+                    <Menu.Content bg="bg.panel" borderColor="border">
+                        {menuTypes.map(type => (
+                            <Menu.Item
+                                key={type}
+                                value={type}
+                                color="fg"
+                                _hover={{ bg: "bg.subtle" }}
+                                onClick={_ => onSelectType?.(type)}
+                            >
+                                {type}
+                            </Menu.Item>
+                        ))}
                     </Menu.Content>
                 </Menu.Positioner>
             </Menu.Root>

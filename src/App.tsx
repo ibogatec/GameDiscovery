@@ -78,6 +78,9 @@ function App() {
 
     return (
         <Grid
+            bg="bg"
+            color="fg"
+            minHeight="100vh"
             templateAreas={{
                 base: "'nav' 'main'",
                 lg: "'nav nav' 'aside main'",
@@ -86,6 +89,7 @@ function App() {
                 base: "1fr",
                 lg: "256px 1fr",
             }}
+            templateRows="auto 1fr"
         >
             <GridItem area="nav">
                 <NavBar onSearchChange={handleSearchChange} />

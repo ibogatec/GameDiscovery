@@ -37,7 +37,7 @@ function PlatformIconList({ platforms }: PlatformIconListProps) {
                 index++;
                 platform = platform.toLocaleLowerCase().trim();
                 const iconComponent = iconMap[platform] ?? IoGameController;
-                return <Icon key={index} as={iconComponent} size="lg" color="gray.500"></Icon>
+                return <Icon key={index} as={iconComponent} size="lg" color="fg.muted"></Icon>
             })}
         </HStack>
     );
