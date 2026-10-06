@@ -4,7 +4,7 @@ import ColorModeSwitch from "./ColorModeSwitch.tsx";
 import SearchInput from "@/components/SearchInput.tsx";
 
 interface Props {
-    onSearchChange?: (searchTerm?: string) => void;
+    onSearchChange?: (searchTerm: string) => void;
 }
 
 function NavBar({ onSearchChange }: Props) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function useSearch() {
-    const [searchTerm, setSearchTerm] = useState<string>();
+    const [searchTerm, setSearchTerm] = useState<string>('');
     return { searchTerm, setSearchTerm };
 }
 

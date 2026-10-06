@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function useSort() {
-    const [selectedSort, setSelectedSort] = useState<string | undefined>('');
+    const [selectedSort, setSelectedSort] = useState<string>('');
     return { selectedSort, setSelectedSort };
 }
 

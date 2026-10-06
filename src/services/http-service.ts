@@ -1,9 +1,5 @@
-import apiClient, { CanceledError } from "@/services/api-client.ts";
-import type ApiError from "@/dto/api-error.ts";
-
-export type ResponseType<T> = (data: T) => void;
-export type ErrorType = (error: ApiError, data?: {}) => void;
-export type FinallyType = () => void;
+import { type AxiosError } from "axios";
+import apiClient from "@/services/api-client.ts";
 
 class HttpService {
     private _endpoint: string = '';
@@ -13,23 +9,22 @@ class HttpService {
         this._endpoint = value;
     }
 
-    public getAll<T>(responseCallback?: ResponseType<T[]>, errorCallback?: ErrorType, finallyCallback?: FinallyType) {
-        const controller = new AbortController();
-        const request = apiClient.get<T[]>(this._endpoint, { signal: controller.signal });
-        Promise.all([request, this.delay()])
+    public async getAll<T>() {
+        const request = apiClient.get<T[]>(this._endpoint);
+        return Promise.all([request, this.delay()])
             .then(([resp]) => {
-                responseCallback?.(resp.data);
+                return resp.data;
             })
-            .catch((error) => {
-                if (error instanceof CanceledError) {
-                    return;
-                }
-                errorCallback?.(error as ApiError);
+            .catch((error: AxiosError) => {
+                throw {
+                    name: error.name,
+                    message: error.message,
+                    code: error.code,
+                    status: error.status,
+                };
             })
             .finally(() => {
-                finallyCallback?.();
             });
-        return controller;
     }
 
     private delay() {

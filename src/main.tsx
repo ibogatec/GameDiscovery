@@ -10,8 +10,8 @@ const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
             retry: 1,
-            gcTime: 120_000, // Query object in the cache will be garbage collected after 2 minutes of inactivity
-            staleTime: 30_000, // Query object in the cache will be considered stale after 30 seconds of inactivity
+            gcTime: 3_600_000, // Unused/inactive query entries will be garbage collected after 60 minutes
+            staleTime: 90_000, // Fetched data remains fresh for 90 seconds before becoming stale
             refetchOnWindowFocus: true,
             refetchOnMount: true,
             refetchOnReconnect: true,
